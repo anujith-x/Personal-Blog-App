@@ -36,7 +36,21 @@ app.post("/signUp", async (req, res) => {
   res.send({message:"success"})
 });
 
+app.post('/login',async (req, res) => {
+  let email = req.body.email;
+  let password = req.body.password;
 
+  const isUser = await User.findOne({email:email})
+  if(isUser) {
+    if(isUser.password === password){
+      console.log(isUser);
+    }else {
+      res.send("wrong credentials")
+    }
+  }
+  res.status(201).send("Login successful")
+  console.log("login successful");
+})
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/BlogApp2024")
