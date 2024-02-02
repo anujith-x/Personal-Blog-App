@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const signUpSchema = mongoose.Schema({
+const UserSchema = mongoose.Schema({
   email: {
     type: String,
     required: true
@@ -11,4 +11,4 @@ const signUpSchema = mongoose.Schema({
   }
 }, {timeStamps: true})
 
-export const SignUp = mongoose.model('signUp', signUpSchema)
+export const User = mongoose.model('user', UserSchema)

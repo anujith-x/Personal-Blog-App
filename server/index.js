@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import { SignUp } from "./models/signUpModel.js";
+import { User } from "./models/signUpModel.js";
 
 const app = express();
 const PORT = 4000;
@@ -21,7 +21,7 @@ app.post("/signUp", async (req, res) => {
   }
   let email = req.body.email;
   let password = req.body.password;
-  const newUser = SignUp({
+  const newUser = User({
     email: email,
     password: password,
   });
@@ -35,6 +35,8 @@ app.post("/signUp", async (req, res) => {
     });
   res.send({message:"success"})
 });
+
+
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/BlogApp2024")
